@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pendaftaran Lomba Bola Voli</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+/* Gaya untuk tabel */
+table {
+    width:400px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Gaya untuk label */
+label {
+    font-weight: bold;
+}
+
+/* Gaya untuk input */
+input[type="text"],
+input[type="number"] {
+    width: 70%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Gaya untuk tombol daftar */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <h1>Pendaftaran Lomba Bola Voli</h1>
+    <form action="proses.php" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr>
+       <td> Nama Tim:</td>
+    <td><input type="text" name="nama_tim" oninput="this.value = this.value.replace(/[^a-zA-Z]+/g, '')" required></td>
+    </tr>
+<tr>
+    <td> Jumlah Anggota:</td>
+    <td> <input type="number" name="jumlah_anggota" required></td>
+    </tr>
+<tr>
+    <td>   RT:</td>
+    <td>   <input type="number" name="asal_rt" required></td>
+    </tr>
+    <tr>
+    <td>   RW:</td>
+    <td>   <input type="number" name="asal_rw" required></td>
+    </tr>
+<tr>
+    <td> Nama Ketua Tim:</td>
+    <td>  <input type="text" name="nama_ketua" oninput="this.value = this.value.replace(/[^a-zA-Z]+/g, '')" required></td>
+    </tr>
+<tr>
+    <td>   Nomor HP Ketua Tim:</td>
+    <td>  <input type="text" name="nomor_hp_ketua" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="12" required></td>
+    </tr>
+    <tr>
+       <td> Tanggal:</td>
+    <td><input type="date" name="tanggal_pendaftaran" required></td>
+    </tr>
+<tr>
+<tr>
+       <td>TIM:</td>
+    <td><input type="radio" name="tim" required>PUTRA
+        <input type="radio" name="tim" required>PUTRI </td>
+    </tr>
+<tr>
+    <td>Upload Foto KTP Ketua Tim:</td>
+    <td>  <input type="file" id="file" name="foto_ktp_ketua" onchange="Filevalidation()" required></td>
+    </tr>
+<tr>
+        <td> <input type="submit" value="Daftar"></td> 
+    </tr>
+    </table>
+    <script>
+    Filevalidation = () => {
+        const foto =document.getElementById('file');
+
+        if (foto.files.length > 0) {
+            for (const i = 0; i <= foto.files.length - 1; i++) {
+
+                const fsize = foto.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+
+                if (file >= 2048) {
+                    alert(
+                        "Ukuran lebih dari 2MB"
+                    );
+                }
+            }
+        }
+    }
+</script>
+    </form>
+</body>
+</html>
